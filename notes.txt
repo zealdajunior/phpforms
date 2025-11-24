@@ -1,0 +1,22 @@
+User registration
+- id - HANDLED BY THE DATABASE
+
+- name    ->   TEXT
+- email   ->  EMAIL
+- gender  ->  SELECT / RADIO  
+- password -> PASSWORD
+- phone_number -> TEXT
+- address -> TEXT
+- date_of_birth -> DATE
+- place_of_birth -> TEXT
+
+- created_at  - HANDLED BY THE DATABASE
+- updated_at  - HANDLED BY THE DATABASE
+
+
+GET -> Get resources from the server
+POST -> Saving data in the server
+PUT -> Update all records
+PATCH -> Update one column
+DELETE -> Delete resources
+
