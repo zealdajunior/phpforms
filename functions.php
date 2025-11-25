@@ -5,4 +5,9 @@ function validateInput(string $input): string {
     $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
     return $input;
 }
+
+function redirect(string $url): void {
+    header("Location: $url");
+    exit();
+}
 ?>
