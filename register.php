@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       exit();
     }
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    $sql = "INSERT INTO phpforms 
+    try{
+          $sql = "INSERT INTO phpforms 
         (fullName, emailAddress, password, gender, phoneNumber, address, placeOfBirth, dateOfBirth, role) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -44,6 +44,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<p class='error'>❌ Error: " . $stmt->error . "</p>";
     }
+    }
+        catch(\Exception $e) {
+      
+        if($e->getCode() === 1062) {
+            $_SESSION['error'] = "The email address already exists";
+            redirect("./index.php");
+        }else {
+            $_SESSION['error'] = "Unexpected error please try again!";
+            redirect("./index.php");
+        }
+    }
+
 }
 ?>
 
